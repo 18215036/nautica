@@ -1,5 +1,6 @@
 package core
 
+//dive tables initializer
 //includes functions for file read/write operations with parsing
 
 import (
@@ -8,6 +9,18 @@ import (
   "log"
   "os"
 )
+
+func init() { //dataOne Initializer
+
+}
+
+func init() { //dataTwo Initializer
+
+}
+
+func init() { //dataThree Initializer
+
+}
 
 // readLines reads a whole file into memory
 // and returns a slice of its lines.
