@@ -10,6 +10,10 @@ import{
 //NO DECO DIVE HANDLING at the moment, will be implemented
 //Add another dive (y/n)?Add another dive (y/n)? //problem? brought from C
 
+var T1 [24]DATA1
+var T2 [16]DATA2
+var T3 [24]DATA3
+
 func mToF(m int) int {
     return Ceil(3.28084*m)
 }
