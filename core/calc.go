@@ -154,7 +154,7 @@ func F2(pGroup string, S int) string {
 }
 
 //TABLE 3 FUNCTION //RNT for Next Dive //-2? //-3?
-func F3 (pGroup string, nDepth int) int {
+func F3(pGroup string, nDepth int) int {
     i := 0
     ft := mToF(nDepth)
     
@@ -198,6 +198,14 @@ func F3 (pGroup string, nDepth int) int {
     default:
         return 0;
     }
+}
+
+func Calculate(req json) json {
+	dive := parseJSON(req)
+
+	assdasbdjasbndkas
+
+	return unparseJSON(dive)
 }
 
 /* -1 : Unlimited No-Stop Limit */

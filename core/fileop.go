@@ -9,6 +9,7 @@ import (
     "log"
     "os"
     "strings"
+    "encoding/json"
 )
 
 func init() { //NDT Table Initializer
@@ -164,4 +165,25 @@ func writeLines(lines []string, path string) error {
         fmt.Fprintln(w, line)
     }
     return w.Flush()
+}
+
+// parsing json to struct
+func parseJSON(req json) []Dive {
+    var dives []Dive
+    err := json.Unmarshal(req, &dives)
+    if err != nil {
+        fmt.Println("error:", err)
+        os.Exit(1)
+    }
+    return dives
+}
+
+//unparsing struct to json
+func unparseJSON(dive []Dive) json {
+    res, err := json.Marshal(dive)
+    if err != nil {
+        fmt.Println("error:", err)
+        os.Exit(1)
+    }
+    return res
 }

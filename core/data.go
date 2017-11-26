@@ -1,13 +1,13 @@
 package core
 
 type Dive struct { //individual dive data
-	D int
-	R int
-	A int
-	T int
-	S int
-	P string
-	C string
+	D int    //depth
+	R int    //residual nitrogen time
+	A int    //actual bottom time
+	T int    //total bottom time
+	S int    //surface interval
+	P string //previous dive group
+	C string //current dive group
 }
 
 type DATA2 struct { //surface interval data
@@ -30,11 +30,11 @@ type DATA2 struct { //surface interval data
 }
 
 type DATA3 struct { //residual nitrogen data
-	d2 DATA2
+	d2 DATA2  //dive groups
 	DE int    //next dive depth
 }
 
 type DATA1 struct { //no-deco data
-	d3 DATA3
+	d3 DATA3   //depth & dive groups
 	NSL int    //no-stop limit
 }
