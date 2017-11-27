@@ -168,7 +168,7 @@ func writeLines(lines []string, path string) error {
 }
 
 // parsing json to struct
-func parseJSON(req json) []Dive {
+func parseJSON(req string) []Dive {
     var dives []Dive
     err := json.Unmarshal(req, &dives)
     if err != nil {
@@ -179,7 +179,7 @@ func parseJSON(req json) []Dive {
 }
 
 //unparsing struct to json
-func unparseJSON(dive []Dive) json {
+func unparseJSON(dive []Dive) string {
     res, err := json.Marshal(dive)
     if err != nil {
         fmt.Println("error:", err)

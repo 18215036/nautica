@@ -133,7 +133,7 @@ func F2(pGroup string, S int) string {
                                                         if nGroup = "M"; S <= T2[i].N {
                                                             if nGroup = "N"; S <= T2[i].O {
                                                                 if nGroup = "O"; S <= T2[i].Z {
-                                                                    nGroup = "Z";
+                                                                    nGroup = "Z"
                                                                 }
                                                             }
                                                         }
@@ -164,43 +164,43 @@ func F3(pGroup string, nDepth int) int {
 
     switch pGroup {
     case "A":
-        return T3[i].d2.A;
+        return T3[i].d2.A
     case "B":
-        return T3[i].d2.B;
+        return T3[i].d2.B
     case "C":
-        return T3[i].d2.C;
+        return T3[i].d2.C
     case "D":
-        return T3[i].d2.D;
+        return T3[i].d2.D
     case "E":
-        return T3[i].d2.E;
+        return T3[i].d2.E
     case "F":
-        return T3[i].d2.F;
+        return T3[i].d2.F
     case "G":
-        return T3[i].d2.G;
+        return T3[i].d2.G
     case "H":
-        return T3[i].d2.H;
+        return T3[i].d2.H
     case "I":
-        return T3[i].d2.I;
+        return T3[i].d2.I
     case "J":
-        return T3[i].d2.J;
+        return T3[i].d2.J
     case "K":
-        return T3[i].d2.K;
+        return T3[i].d2.K
     case "L":
-        return T3[i].d2.L;
+        return T3[i].d2.L
     case "M":
-        return T3[i].d2.M;
+        return T3[i].d2.M
     case "N":
-        return T3[i].d2.N;
+        return T3[i].d2.N
     case "O":
-        return T3[i].d2.O;
+        return T3[i].d2.O
     case "Z":
-        return T3[i].d2.Z;
+        return T3[i].d2.Z
     default:
-        return 0;
+        return 0
     }
 }
 
-func Calculate(req json) json {
+func Calculate(sequence DiveSeq) string {
 	dive := parseJSON(req)
 
 	assdasbdjasbndkas
