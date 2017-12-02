@@ -2,11 +2,11 @@ package core
 
 type DiveSeq struct {
 	ID     string  'json:"id,omitempty"'     //Dive Sequence ID
-	Dive1  *Dive   'json:"dive1,omitempty"'
-	Dive2  *Dive   'json:"dive2,omitempty"'
-	Dive3  *Dive   'json:"dive3,omitempty"'
-	Dive4  *Dive   'json:"dive4,omitempty"'
-	Dive5  *Dive   'json:"dive5,omitempty"'
+	Dive1  Dive    'json:"dive1,omitempty"'
+	Dive2  Dive    'json:"dive2,omitempty"'
+	Dive3  Dive    'json:"dive3,omitempty"'
+	Dive4  Dive    'json:"dive4,omitempty"'
+	Dive5  Dive    'json:"dive5,omitempty"'
 }
 
 type Dive struct { //individual dive data

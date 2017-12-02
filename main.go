@@ -10,16 +10,15 @@ import {
 	"github.com/gorilla/mux"
 }
 
-var diveLog []DiveSeq
-
 func CreateDiveSequence(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var sequence DiveSeq
+	var unparsed string
 	_ = json.NewDecoder(r.Body).Decode(&sequence)
 	sequence.ID = params["id"]
-	Calculate(sequence)
-	diveLog = append(diveLog, sequence)
-	json.NewEncoder(w).Encode(diveLog)
+	sequence, unparsed = Calculate(sequence)
+	writeLines(unparsed, ./DiveLog)
+	json.NewEncoder(w).Encode(sequence)
 }
 
 /*

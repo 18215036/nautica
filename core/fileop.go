@@ -167,6 +167,7 @@ func writeLines(lines []string, path string) error {
     return w.Flush()
 }
 
+/* probably not needed
 // parsing json to struct
 func parseJSON(req string) []Dive {
     var dives []Dive
@@ -177,6 +178,7 @@ func parseJSON(req string) []Dive {
     }
     return dives
 }
+*/
 
 //unparsing struct to json
 func unparseJSON(dive []Dive) string {

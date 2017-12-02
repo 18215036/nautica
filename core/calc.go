@@ -200,12 +200,58 @@ func F3(pGroup string, nDepth int) int {
     }
 }
 
-func Calculate(sequence DiveSeq) string {
-	dive := parseJSON(req)
+func Calculate(sequence DiveSeq) DiveSeq, string {
+    d := [5]Dive{sequence.Dive1, sequence.Dive2, sequence.Dive3, sequence.Dive4, sequence.Dive5}
+    i := 0
+    firstDive := true
+    decoDive := false
 
-	assdasbdjasbndkas
+    for !decoDive && i < 5 && d[i] != nil {
+    	if firstDive {
+    		d[i].P = 0
+    		d[i].R = 0
+    		firstDive = !firstDive
+    	}
+    	else {
+            d[i].P = F2(d[i-1].C, d[i-1].S)
+            if d[i].P == -4 {
+            	d[i].P = 0
+            	d[i].R = 0
+            }
+            else {
+            	if d[i].P == -5 {
+            		if d[i].D <= d[i-1].D { d[i].D = d[i-1].D }
+					d[i].A += d[i-1].A
+					d[i].S += d[i-1].S	//added Surface Interval
+					d[i].P = d[i-1].P
+            	}
+            	d[i].R = F3(d[i].P, d[i].D)
+            }
+    	}
 
-	return unparseJSON(dive)
+    	if d[i].R == -2 {
+            d[i].T = d[i].A
+            d[i].C = d[i].P
+    	}
+    	else if d[i].R == -3 {
+            d[i].T = -6  //deco
+            d[i].C = -6
+    	}
+    	else {
+            d[i].T = d[i].R + d[i].A
+            d[i].C = F1(d[i].D, d[i].T)
+    	}
+
+    	if d[i].C == -6 { decoDive = true }
+    	i++
+    }
+    sequence.Dive1 = d[0]
+    sequence.Dive2 = d[1]
+    sequence.Dive3 = d[2]
+    sequence.Dive4 = d[3]
+    sequence.Dive5 = d[4]
+
+    return sequence, unparseJSON(d)
 }
 
 /* -1 : Unlimited No-Stop Limit */
