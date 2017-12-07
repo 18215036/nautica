@@ -4,140 +4,147 @@ package core
 //includes functions for file read/write operations with parsing
 
 import (
+    //"log"
     "bufio"
     "fmt"
-    "log"
     "os"
     "strings"
+    "strconv"
     "encoding/json"
 )
 
-func init() { //NDT Table Initializer
-    data1, err := readLines("./D1")
-    for i := 0; i < 24; i++ {
-        dataSlice := strings.Split(data1[i], ",")
+func init1() { //NDT Table Initializer
+    data1, _  := ReadLines("./D1")
+    for i, line := range data1 {
+        dataSlice := strings.Split(line, ",")
         j := 0
-        T1[i].d3.DE = dataSlice[j]
+        T1[i].d3.DE, _ = strconv.Atoi(dataSlice[j])
         j++
-        T1[i].NSL = dataSlice[j]
+        T1[i].NSL, _ = strconv.Atoi(dataSlice[j])
         j++
-        T1[i].d3.d2.A = dataSlice[j]
+        T1[i].d3.d2.A, _ = strconv.Atoi(dataSlice[j])
         j++
-        T1[i].d3.d2.B  = dataSlice[j]
+        T1[i].d3.d2.B, _ = strconv.Atoi(dataSlice[j])
         j++
-        T1[i].d3.d2.C  = dataSlice[j]
+        T1[i].d3.d2.C, _ = strconv.Atoi(dataSlice[j])
         j++
-        T1[i].d3.d2.D  = dataSlice[j]
+        T1[i].d3.d2.D, _ = strconv.Atoi(dataSlice[j])
         j++
-        T1[i].d3.d2.E  = dataSlice[j]
+        T1[i].d3.d2.E, _ = strconv.Atoi(dataSlice[j])
         j++
-        T1[i].d3.d2.F  = dataSlice[j]
+        T1[i].d3.d2.F, _ = strconv.Atoi(dataSlice[j])
         j++
-        T1[i].d3.d2.G  = dataSlice[j]
+        T1[i].d3.d2.G, _ = strconv.Atoi(dataSlice[j])
         j++
-        T1[i].d3.d2.H  = dataSlice[j]
+        T1[i].d3.d2.H, _ = strconv.Atoi(dataSlice[j])
         j++
-        T1[i].d3.d2.I  = dataSlice[j]
+        T1[i].d3.d2.I, _ = strconv.Atoi(dataSlice[j])
         j++
-        T1[i].d3.d2.J  = dataSlice[j]
+        T1[i].d3.d2.J, _ = strconv.Atoi(dataSlice[j])
         j++
-        T1[i].d3.d2.K  = dataSlice[j]
+        T1[i].d3.d2.K, _ = strconv.Atoi(dataSlice[j])
         j++
-        T1[i].d3.d2.L  = dataSlice[j]
+        T1[i].d3.d2.L, _ = strconv.Atoi(dataSlice[j])
         j++
-        T1[i].d3.d2.M  = dataSlice[j]
+        T1[i].d3.d2.M, _ = strconv.Atoi(dataSlice[j])
         j++
-        T1[i].d3.d2.N  = dataSlice[j]
+        T1[i].d3.d2.N, _ = strconv.Atoi(dataSlice[j])
         j++
-        T1[i].d3.d2.O  = dataSlice[j]
+        T1[i].d3.d2.O, _ = strconv.Atoi(dataSlice[j])
         j++
-        T1[i].d3.d2.Z  = dataSlice[j]
+        T1[i].d3.d2.Z, _ = strconv.Atoi(dataSlice[j])
     }
 }
 
-func init() { //SI Table Initializer
-    data2, err := readLines("./D2")
-    for i := 0; i < 16; i++ {
-        dataSlice := strings.Split(data2[i], ",")
+func init2() { //SI Table Initializer
+    data2, _ := ReadLines("./D2")
+   for i, line := range data2 {
+        dataSlice := strings.Split(line, ",")
         j := 0
-        T2[i].A = dataSlice[j]
+        T2[i].A, _ = strconv.Atoi(dataSlice[j])
         j++
-        T2[i].B  = dataSlice[j]
+        T2[i].B, _ = strconv.Atoi(dataSlice[j])
         j++
-        T2[i].C  = dataSlice[j]
+        T2[i].C, _ = strconv.Atoi(dataSlice[j])
         j++
-        T2[i].D  = dataSlice[j]
+        T2[i].D, _ = strconv.Atoi(dataSlice[j])
         j++
-        T2[i].E  = dataSlice[j]
+        T2[i].E, _ = strconv.Atoi(dataSlice[j])
         j++
-        T2[i].F  = dataSlice[j]
+        T2[i].F, _ = strconv.Atoi(dataSlice[j])
         j++
-        T2[i].G  = dataSlice[j]
+        T2[i].G, _ = strconv.Atoi(dataSlice[j])
         j++
-        T2[i].H  = dataSlice[j]
+        T2[i].H, _ = strconv.Atoi(dataSlice[j])
         j++
-        T2[i].I  = dataSlice[j]
+        T2[i].I, _ = strconv.Atoi(dataSlice[j])
         j++
-        T2[i].J  = dataSlice[j]
+        T2[i].J, _ = strconv.Atoi(dataSlice[j])
         j++
-        T2[i].K  = dataSlice[j]
+        T2[i].K, _ = strconv.Atoi(dataSlice[j])
         j++
-        T2[i].L  = dataSlice[j]
+        T2[i].L, _ = strconv.Atoi(dataSlice[j])
         j++
-        T2[i].M  = dataSlice[j]
+        T2[i].M, _ = strconv.Atoi(dataSlice[j])
         j++
-        T2[i].N  = dataSlice[j]
+        T2[i].N, _ = strconv.Atoi(dataSlice[j])
         j++
-        T2[i].O  = dataSlice[j]
+        T2[i].O, _ = strconv.Atoi(dataSlice[j])
         j++
-        T2[i].Z  = dataSlice[j]
+        T2[i].Z, _ = strconv.Atoi(dataSlice[j])
     }
 }
 
-func init() { //RNT Table Initializer
-    data3, err := readLines("./D3")
-    for i := 0; i < 24; i++ {
-        dataSlice := strings.Split(data3[i], ",")
+func init3() { //RNT Table Initializer
+    data3, _ := ReadLines("./D3")
+    for i, line := range data3 {
+        dataSlice := strings.Split(line, ",")
         j := 0
-        T3[i].DE = dataSlice[j]
+        T3[i].DE, _ = strconv.Atoi(dataSlice[j])
         j++
-        T3[i].d2.Z = dataSlice[j]
+        T3[i].d2.Z, _ = strconv.Atoi(dataSlice[j])
         j++
-        T3[i].d2.O  = dataSlice[j]
+        T3[i].d2.O, _ = strconv.Atoi(dataSlice[j])
         j++
-        T3[i].d2.N  = dataSlice[j]
+        T3[i].d2.N, _ = strconv.Atoi(dataSlice[j])
         j++
-        T3[i].d2.M  = dataSlice[j]
+        T3[i].d2.M, _ = strconv.Atoi(dataSlice[j])
         j++
-        T3[i].d2.L  = dataSlice[j]
+        T3[i].d2.L, _ = strconv.Atoi(dataSlice[j])
         j++
-        T3[i].d2.K  = dataSlice[j]
+        T3[i].d2.K, _ = strconv.Atoi(dataSlice[j])
         j++
-        T3[i].d2.J  = dataSlice[j]
+        T3[i].d2.J, _ = strconv.Atoi(dataSlice[j])
         j++
-        T3[i].d2.I  = dataSlice[j]
+        T3[i].d2.I, _ = strconv.Atoi(dataSlice[j])
         j++
-        T3[i].d2.H  = dataSlice[j]
+        T3[i].d2.H, _ = strconv.Atoi(dataSlice[j])
         j++
-        T3[i].d2.G  = dataSlice[j]
+        T3[i].d2.G, _ = strconv.Atoi(dataSlice[j])
         j++
-        T3[i].d2.F  = dataSlice[j]
+        T3[i].d2.F, _ = strconv.Atoi(dataSlice[j])
         j++
-        T3[i].d2.E  = dataSlice[j]
+        T3[i].d2.E, _ = strconv.Atoi(dataSlice[j])
         j++
-        T3[i].d2.D  = dataSlice[j]
+        T3[i].d2.D, _ = strconv.Atoi(dataSlice[j])
         j++
-        T3[i].d2.C  = dataSlice[j]
+        T3[i].d2.C, _ = strconv.Atoi(dataSlice[j])
         j++
-        T3[i].d2.B  = dataSlice[j]
+        T3[i].d2.B, _ = strconv.Atoi(dataSlice[j])
         j++
-        T3[i].d2.A  = dataSlice[j]
+        T3[i].d2.A, _ = strconv.Atoi(dataSlice[j])
     }
+}
+
+func init() {
+	init1()
+	init2()
+	init3()
 }
 
 // readLines reads a whole file into memory
 // and returns a slice of its lines.
-func readLines(path string) ([]string, error) {
+func ReadLines(path string) ([]string, error) {
     file, err := os.Open(path)
     if err != nil {
         return nil, err
@@ -147,13 +154,13 @@ func readLines(path string) ([]string, error) {
     var lines []string
     scanner := bufio.NewScanner(file)
     for scanner.Scan() {
-        lines = append(lines, scanner.Text())
+	lines = append(lines, scanner.Text())
     }
     return lines, scanner.Err()
 }
 
 // writeLines writes the lines to the given file.
-func writeLines(lines []string, path string) error {
+func WriteLines(lines []string, path string) error {
     file, err := os.Create(path)
     if err != nil {
         return err
@@ -187,5 +194,5 @@ func unparseJSON(dive []Dive) string {
         fmt.Println("error:", err)
         os.Exit(1)
     }
-    return res
+    return string(res)
 }
