@@ -1,22 +1,22 @@
 package core
 
 type DiveSeq struct {
-    ID     string //Dive Sequence ID
-    Dive1  Dive
-    Dive2  Dive
-    Dive3  Dive
-    Dive4  Dive
-    Dive5  Dive
+    //ID     string //Dive Sequence ID
+    Dive1  Dive `json:",omitempty"`
+    Dive2  Dive `json:",omitempty"`
+    Dive3  Dive `json:",omitempty"`
+    Dive4  Dive `json:",omitempty"`
+    Dive5  Dive `json:",omitempty"`
 }
 
 type Dive struct { //individual dive data
-    D   int    //depth
-    R   int    //residual nitrogen time
-    A   int    //actual bottom time
-    T   int    //total bottom time
-    S   int    //surface interval
-    P   string //previous dive group
-    C   string //current dive group
+    D   int    `json:",omitempty"` //depth
+    R   int    `json:",omitempty"` //residual nitrogen time
+    A   int    `json:",omitempty"` //actual bottom time
+    T   int    `json:",omitempty"` //total bottom time
+    S   int    `json:",omitempty"` //surface interval
+    P   string `json:",omitempty"` //previous dive group
+    C   string `json:",omitempty"` //current dive group
 }
 
 type DATA2 struct { //surface interval data

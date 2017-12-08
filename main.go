@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"encoding/json"
@@ -12,11 +11,15 @@ import (
 )
 
 func CreateDiveSequence(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
+	//params := mux.Vars(r)
 	var sequence core.DiveSeq
 	var unparsed string
 	_ = json.NewDecoder(r.Body).Decode(&sequence)
-	sequence.ID = params["id"]
+	//sequence.ID = params["id"]
+	log.Println(sequence)
+	log.Println(sequence.Dive1)
+	log.Println(sequence.Dive2)
+	log.Println(sequence.Dive3)
 	sequence, unparsed = core.Calculate(sequence)
 	note := []string{unparsed}
 	core.WriteLines(note, "./DiveLog")
@@ -30,9 +33,11 @@ func GetDiveSequence(w http.ResponseWriter, r *http.Request) {
 */
 
 func main() {
+	addr := ":8081"
 	router := mux.NewRouter()
 	router.HandleFunc("/dives/{id}", CreateDiveSequence).Methods("POST")
 	//router.HandleFunc("/dives/{id}", GetDiveSequence).Methods("GET")
-	fmt.Println("nautica running on localhost:8081")
-	log.Fatal(http.ListenAndServe(":8081", router))
+	
+	log.Println("nautica running on localhost", addr)
+	log.Fatal(http.ListenAndServe(addr, router))
 }

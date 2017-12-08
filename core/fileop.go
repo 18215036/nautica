@@ -14,7 +14,7 @@ import (
 )
 
 func init1() { //NDT Table Initializer
-    data1, _  := ReadLines("./D1")
+    data1, _  := ReadLines("core/D1")
     for i, line := range data1 {
         dataSlice := strings.Split(line, ",")
         j := 0
@@ -57,7 +57,7 @@ func init1() { //NDT Table Initializer
 }
 
 func init2() { //SI Table Initializer
-    data2, _ := ReadLines("./D2")
+    data2, _ := ReadLines("core/D2")
    for i, line := range data2 {
         dataSlice := strings.Split(line, ",")
         j := 0
@@ -96,7 +96,7 @@ func init2() { //SI Table Initializer
 }
 
 func init3() { //RNT Table Initializer
-    data3, _ := ReadLines("./D3")
+    data3, _ := ReadLines("core/D3")
     for i, line := range data3 {
         dataSlice := strings.Split(line, ",")
         j := 0
