@@ -1,8 +1,9 @@
+//18215036/Ahmad Fawwaz Zuhdi
 package core
 
-import{
+import (
     "math"
-}
+)
 
 //Dive Table Calculator (based on US DIVING MANUAL REV.7
 //created by: 18215036 / Ahmad Fawwaz Zuhdi
@@ -16,7 +17,7 @@ var T3 [24]DATA3
 
 //convert meter to feet
 func mToF(m int) int {
-    return Ceil(3.28084*m)
+    return int(math.Ceil(3.28084*(float64(m))))
 }
 
 //convert group number to group letter
@@ -72,35 +73,35 @@ func F1(depth int, total int) string {
     switch {
     case total > T1[i].NSL :
         return "-6"
-    case total <= T1[i].d3.d2.A) :
+    case total <= T1[i].d3.d2.A :
         return "A"
-    case total <= T1[i].d3.d2.B) :
+    case total <= T1[i].d3.d2.B :
         return "B"
-    case total <= T1[i].d3.d2.C) :
+    case total <= T1[i].d3.d2.C :
         return "C"
-    case total <= T1[i].d3.d2.D) :
+    case total <= T1[i].d3.d2.D :
         return "D"
-    case total <= T1[i].d3.d2.E) :
+    case total <= T1[i].d3.d2.E :
         return "E"
-    case total <= T1[i].d3.d2.F) :
+    case total <= T1[i].d3.d2.F :
         return "F"
-    case total <= T1[i].d3.d2.G) :
+    case total <= T1[i].d3.d2.G :
         return "G"
-    case total <= T1[i].d3.d2.H) :
+    case total <= T1[i].d3.d2.H :
         return "H"
-    case total <= T1[i].d3.d2.I) :
+    case total <= T1[i].d3.d2.I :
         return "I"
-    case total <= T1[i].d3.d2.J) :
+    case total <= T1[i].d3.d2.J :
         return "J"
-    case total <= T1[i].d3.d2.K) :
+    case total <= T1[i].d3.d2.K :
         return "K"
-    case total <= T1[i].d3.d2.L) :
+    case total <= T1[i].d3.d2.L :
         return "L"
-    case total <= T1[i].d3.d2.M) :
+    case total <= T1[i].d3.d2.M :
         return "M"
-    case total <= T1[i].d3.d2.N) :
+    case total <= T1[i].d3.d2.N :
         return "N"
-    case total <= T1[i].d3.d2.O) :
+    case total <= T1[i].d3.d2.O :
         return "O"
     default :
         return "Z"
@@ -117,7 +118,9 @@ func F2(pGroup string, S int) string {
     for nToL(i+1) != pGroup {
         i++
     }
-    if nGroup := "-4"; S <= T2[i].A {
+
+    nGroup := "-4"
+    if S <= T2[i].A {
         if nGroup = "A"; S <= T2[i].B {
             if nGroup = "B"; S <= T2[i].C {
                 if nGroup = "C"; S <= T2[i].D {
@@ -200,26 +203,24 @@ func F3(pGroup string, nDepth int) int {
     }
 }
 
-func Calculate(sequence DiveSeq) DiveSeq, string {
-    d := [5]Dive{sequence.Dive1, sequence.Dive2, sequence.Dive3, sequence.Dive4, sequence.Dive5}
+func Calculate(sequence DiveSeq) (DiveSeq, string) {
+    d := []Dive{sequence.Dive1, sequence.Dive2, sequence.Dive3, sequence.Dive4, sequence.Dive5}
     i := 0
     firstDive := true
     decoDive := false
 
-    for !decoDive && i < 5 && d[i] != nil {
+    for !decoDive && i < 5 && &(d[i]) != nil {
     	if firstDive {
-    		d[i].P = 0
+    		d[i].P = "0"
     		d[i].R = 0
     		firstDive = !firstDive
-    	}
-    	else {
+    	} else {
             d[i].P = F2(d[i-1].C, d[i-1].S)
-            if d[i].P == -4 {
-            	d[i].P = 0
+            if d[i].P == "-4" {
+            	d[i].P = "0"
             	d[i].R = 0
-            }
-            else {
-            	if d[i].P == -5 {
+            } else {
+            	if d[i].P == "-5" {
             		if d[i].D <= d[i-1].D { d[i].D = d[i-1].D }
 					d[i].A += d[i-1].A
 					d[i].S += d[i-1].S	//added Surface Interval
@@ -232,19 +233,25 @@ func Calculate(sequence DiveSeq) DiveSeq, string {
     	if d[i].R == -2 {
             d[i].T = d[i].A
             d[i].C = d[i].P
-    	}
-    	else if d[i].R == -3 {
+    	} else if d[i].R == -3 {
             d[i].T = -6  //deco
-            d[i].C = -6
-    	}
-    	else {
+            d[i].C = "-6"
+    	} else {
             d[i].T = d[i].R + d[i].A
             d[i].C = F1(d[i].D, d[i].T)
     	}
 
-    	if d[i].C == -6 { decoDive = true }
+    	if d[i].C == "-6" { decoDive = true }
     	i++
     }
+    
+    for index, _ := range d {
+		if d[index].D == 0 {
+			d[index].R = 0
+			d[index].P = ""
+			d[index].C = ""
+		}
+	}
     sequence.Dive1 = d[0]
     sequence.Dive2 = d[1]
     sequence.Dive3 = d[2]
