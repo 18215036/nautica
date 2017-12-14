@@ -26,7 +26,7 @@ func CreateDiveSequence(w http.ResponseWriter, r *http.Request) {
 func main() {
 	addr := ":8081"
 	router := mux.NewRouter()
-	router.HandleFunc("/dives/{id}", CreateDiveSequence).Methods("POST")
+	router.HandleFunc("/dives/", CreateDiveSequence).Methods("POST")
 	log.Println("nautica running on localhost", addr)
 	log.Fatal(http.ListenAndServe(addr, router))
 }
