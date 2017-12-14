@@ -15,7 +15,8 @@ func CreateDiveSequence(w http.ResponseWriter, r *http.Request) {
 	var sequence core.DiveSeq
 	var unparsed string
 	_ = json.NewDecoder(r.Body).Decode(&sequence)
-	sequence.ID = (*r).RemoteAddr
+	//sequence.ID = (*r).RemoteAddr
+	sequence.ID = r.Header.Get("x-forwarded-for")
 	sequence, unparsed = core.Calculate(sequence)
 	note := []string{unparsed}
 	core.WriteLines(note, "./DiveLog")
